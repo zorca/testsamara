@@ -54,6 +54,36 @@ class Movies_Database_Public {
 
 	}
 
+    function add_movies_single_template($single_template) {
+
+        global $post;
+
+        if ($post->post_type == 'movies') {
+            if ( $theme_file = locate_template( array ( 'single-movies.php' ) ) ) {
+                $single_template = $theme_file;
+            } else {
+                $single_template = dirname( __FILE__ ) . '/templates/single-movies.php';
+            }
+        }
+
+        return $single_template;
+    }
+
+    function add_movies_archive_template($archive_template) {
+
+        global $post;
+
+        if ($post->post_type == 'movies') {
+            if ( $theme_file = locate_template( array ( 'archive-movies.php' ) ) ) {
+                $archive_template = $theme_file;
+            } else {
+                $archive_template = dirname( __FILE__ ) . '/templates/archive-movies.php';
+            }
+        }
+
+        return $archive_template;
+    }
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
