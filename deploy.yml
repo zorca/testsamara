@@ -1,0 +1,14 @@
+sviter.zorcastudio.org:
+    domain_local: http://testsamara.test
+    domain_remote: http://testsamara.zorcastudio.org
+    https: true
+    deploy_path: ~/deploy/dev
+    domain_folder: ~/webapps/app-testsamara
+    repository: ssh://bitbucket.org/zorca/testsamara.git
+    hostname: 80.209.224.250
+    user: zorca
+    forwardAgent: true
+    multiplexing: false
+    sshOptions:
+        UserKnownHostsFile: /dev/null
+        StrictHostKeyChecking: no
