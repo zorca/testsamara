@@ -182,6 +182,8 @@ class Movies_Database {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+        $this->loader->add_action( 'movies-database-archive-before-list', $plugin_public, 'print_banner' );
+        $this->loader->add_action( 'movies-database-archive-after-list', $plugin_public, 'print_banner' );
 	}
 
 

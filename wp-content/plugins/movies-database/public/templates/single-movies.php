@@ -45,14 +45,20 @@ get_header(); ?>
                         $countries_list = get_the_term_list( $post->ID, 'countries', 'Страна: ', ',', '' );
                         $years_list = get_the_term_list( $post->ID, 'years', 'Год выпуска: ', ',', '' );
 
-                        $meta_text = '<i class="fa fa-folder-open-o"></i> %1$s. <i class="fa fa-folder-open-o"></i> %2$s. <i class="fa fa-folder-open-o"></i> %3$s. <i class="fa fa-link"></i> <a href="%4$s" rel="bookmark">permalink</a>.';
+                        $meta_movie_cost = get_post_meta( $post->ID, 'movie_cost' );
+
+                        $meta_movie_date = get_post_meta( $post->ID, 'movie_date' );
+
+
+                        $meta_text = '<i class="fa fa-folder-open-o"></i> %1$s. <i class="fa fa-folder-open-o"></i> %2$s. <i class="fa fa-folder-open-o"></i> %3$s. <i class="fa fa-folder-open-o"></i>Цена билета: %4$s рублей. <i class="fa fa-folder-open-o"></i>Дата выхода:  %5$s. <i class="fa fa-link"></i>';
 
                         printf(
                             $meta_text,
                             $genres_list,
                             $countries_list,
                             $years_list,
-                            get_permalink()
+                            $meta_movie_cost[0],
+                            $meta_movie_date[0]
                         );
                         ?>
 
