@@ -105,6 +105,11 @@ class Movies_Database {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-movies-database-loader.php';
 
+        /**
+         * The class responsible for orchestrating the CPT and taxonomies.
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'cpt/class-movies-database-cpt.php';
+
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
