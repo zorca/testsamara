@@ -194,6 +194,11 @@ class Movies_Database {
         $plugin_public = new Movies_Database_Cpt( $this->get_plugin_name(), $this->get_version() );
 
         $this->loader->add_action( 'init', $plugin_public, 'custom_post_type_movies' );
+
+        $this->loader->add_action( 'admin_menu', $plugin_public, 'custom_meta_box_movie_execution' );
+
+        $this->loader->add_action( 'save_post', $plugin_public, 'custom_meta_box_movie_execution_save' );
+
         $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_genres' );
         $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_countries' );
         $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_years' );

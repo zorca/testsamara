@@ -77,7 +77,7 @@ class Movies_Database_Cpt {
             'label'                 => __( 'Фильм', 'movies-database' ),
             'description'           => __( 'Тип записи Фильм', 'movies-database' ),
             'labels'                => $labels,
-            'supports'              => array( 'title', 'editor' ),
+            'supports'              => array( 'title', 'editor', 'thumbnail' ),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -94,6 +94,32 @@ class Movies_Database_Cpt {
         );
         register_post_type( 'movies', $args );
 
+    }
+
+    // Register metabox "movie_execution" for "movies"
+    function custom_meta_box_movie_execution() {
+        add_meta_box('movie_execution', 'Прокат фильма', function($post) {
+            wp_nonce_field( basename( __FILE__ ), 'seo_metabox_nonce' );
+            $html = '';
+            $html .= '<label>Стоимость сеанса <input type="text" name="moviecost" value="' . get_post_meta($post->ID, 'movie_cost',true) . '" /></label> ';
+            $html .= '<label>Дата выхода в прокат <input type="text" name="moviedate" value="' . get_post_meta($post->ID, 'movie_date',true) . '" /></label> ';
+            echo $html;
+        }, 'movies', 'normal', 'high');
+    }
+
+    function custom_meta_box_movie_execution_save( $post_id ) {
+        if ( !isset( $_POST['seo_metabox_nonce'] ) || !wp_verify_nonce( $_POST['seo_metabox_nonce'], basename( __FILE__ ) ) )
+            return $post_id;
+        if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+            return $post_id;
+        if ( !current_user_can( 'edit_post', $post_id ) )
+            return $post_id;
+        $post = get_post($post_id);
+        if ($post->post_type == 'movies') {
+            update_post_meta($post_id, 'movie_cost', esc_attr($_POST['moviecost']));
+            update_post_meta($post_id, 'movie_date', $_POST['moviedate']);
+        }
+        return $post_id;
     }
 
     // Register Custom Taxonomy "genres"
