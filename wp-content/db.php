@@ -1,0 +1,1 @@
+D:/laragon/www/testsamara/wp-content/plugins/query-monitor/wp-content/db.php
