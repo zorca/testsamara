@@ -58,7 +58,7 @@ class Movies_Database_Cpt {
             'new_item'              => __( 'Новый фильм', 'movies-database' ),
             'edit_item'             => __( 'Редактировать фильм', 'movies-database' ),
             'update_item'           => __( 'Обновить фильм', 'movies-database' ),
-            'view_item'             => __( 'Просомтр фильма', 'movies-database' ),
+            'view_item'             => __( 'Просмотр фильма', 'movies-database' ),
             'view_items'            => __( 'Просмотр фильмов', 'movies-database' ),
             'search_items'          => __( 'Поиск фильма', 'movies-database' ),
             'not_found'             => __( 'Не найдено', 'movies-database' ),
