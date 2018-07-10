@@ -8,3 +8,9 @@ Version: 1.0.0
 Template: unite
 */
 @import url("../unite/style.css");
+
+.movie {
+    background-color: #e9ffe9;
+    padding: 15px;
+    margin-bottom: 30px;
+}
