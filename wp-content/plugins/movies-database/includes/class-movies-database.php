@@ -78,6 +78,7 @@ class Movies_Database {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+        $this->define_cpt_hooks();
 
 	}
 
@@ -179,6 +180,26 @@ class Movies_Database {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
+
+
+    /**
+     * Register all of the hooks related to the CPT functionality
+     * of the plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     */
+    private function define_cpt_hooks() {
+
+        $plugin_public = new Movies_Database_Cpt( $this->get_plugin_name(), $this->get_version() );
+
+        $this->loader->add_action( 'init', $plugin_public, 'custom_post_type_movies' );
+        $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_genres' );
+        $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_countries' );
+        $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_years' );
+        $this->loader->add_action( 'init', $plugin_public, 'custom_taxonomy_actors' );
+
+    }
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
